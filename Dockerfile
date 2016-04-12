@@ -1,16 +1,18 @@
 FROM ubuntu
-
+https://github.com/samrose/canvas-lms-docker
 RUN apt-get update
 RUN apt-get -y upgrade
 
 # PostgreSQL
 RUN apt-get install -y postgresql-9.3
-RUN sudo -u postgres createuser canvas --no-createdb --no-superuser --no-createrole --pwprompt
-RUN sudo -u postgres createdb canvas_production --owner=canvas
-RUN sudo -u postgres createdb canvas_queue_production --owner=canvas
+FROM library/postgres
+ENV POSTGRES_USER canvas
+ENV POSTGRES_PASSWORD canvas
+ENV POSTGRES_DB canvas_production
+ENV POSTGRES_DB canvas_queue_production
 
 # Git
-RUN sudo apt-get install git-core
+RUN sudo apt-get install git -y
 
 # Canvas User
 RUN adduser canvas
