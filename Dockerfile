@@ -12,7 +12,7 @@ ENV POSTGRES_DB canvas_production
 ENV POSTGRES_DB canvas_queue_production
 
 # Git
-RUN sudo apt-get install git -y
+RUN apt-get install git -y
 
 # Canvas User
 RUN adduser canvas
