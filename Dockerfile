@@ -1,5 +1,5 @@
 FROM ubuntu
-https://github.com/samrose/canvas-lms-docker
+CMD "sh" "-c" "echo nameserver 8.8.8.8 > /etc/resolv.conf"
 RUN apt-get update
 RUN apt-get -y upgrade
 
