@@ -1,6 +1,7 @@
 FROM ubuntu
 CMD "sh" "-c" "echo nameserver 8.8.8.8 > /etc/resolv.conf"
 RUN apt-get update
+RUN apt-get install git -y
 RUN apt-get -y upgrade
 
 # PostgreSQL
@@ -11,8 +12,6 @@ ENV POSTGRES_PASSWORD canvas
 ENV POSTGRES_DB canvas_production
 ENV POSTGRES_DB canvas_queue_production
 
-# Git
-RUN apt-get install git -y
 
 # Canvas User
 RUN adduser canvas
